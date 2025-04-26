@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Garage Blanche</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" />
+
+
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #ffffff;
+      color: #333333;
+    }
+
+    h1, h2, h5 {
+      font-family: 'Poppins', sans-serif;
+    }
+
+    header {
+      background-color: black;
+      padding: 20px 40px;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo img {
+      width: 200px;
+      height: auto;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #ff6600;
+    }
+
+    @media (max-width: 768px) {
+      .header-container {
+        flex-direction: column;
+        text-align: center;
+      }
+
+      nav {
+        flex-direction: column;
+        gap: 20px;
+        margin-top: 10px;
+      }
+
+      .logo img {
+        width: 150px;
+      }
+    }
+
+    
+    .small-carousel {
+      max-height: 400px;
+      overflow: hidden;
+    }
+
+    .small-carousel .carousel-item img {
+      height: 400px;
+      object-fit: cover;
+    }
+
+    .carousel-caption {
+      bottom: 20px;
+    }
+    .carousel-caption-left {
+  left: 0 !important;
+  right: auto;
+  text-align: left;
+  padding-left: 30px;
+  padding-right: 30px;
+  max-width: 600px;
+}
+
+
+    .carousel-caption h1 {
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    .carousel-caption p {
+      font-size: 1rem;
+      color: #dddddd;
+    }
+
+    .carousel-caption .btn {
+      padding: 6px 12px;
+      font-size: 0.9rem;
+      background-color: #ff6600;
+      color: #ffffff;
+      transition: 0.2s ease;
+    }
+
+    .carousel-caption .btn:hover {
+      background-color: #ffffff;
+      color: #ff6600;
+    }
+
+    .about-us {
+      padding: 40px;
+      color: #333333;
+      background: none;
+      border: none;
+    }
+
+    .about-us h1 {
+      color: #000000;
+    }
+
+    .about-us p {
+      font-size: 1.1rem;
+      line-height: 1.6;
+    }
+
+    .card {
+      background-color: #ffff;
+      color: #2C2C2E;
+      border: 1px solid #dddddd;
+      box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+      transform: scale(1.05);
+      box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.2);
+    }
+    
+
+
+    .card-header {
+      background-color: #f07510 ;
+      color: #ffffff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 80px;
+      border-radius: 8px 8px 0 0;
+    }
+    .service-card {
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.service-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+}
+
+.service-card i {
+  transition: transform 0.3s ease;
+}
+
+.service-card:hover i {
+  transform: scale(1.2);
+}
+/* Blog Post Card Styling */
+.blog-post {
+  background: #000000; /* Clean white background */
+  border: 1px solid #eaeaea; /* Subtle border */
+  border-radius: 15px; /* Softer corners for a modern feel */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1); /* Slightly deeper shadow */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  padding: 20px;
+  margin-bottom: 30px;
+}
+
+.blog-post:hover {
+  transform: translateY(-5px); /* Adds a subtle hover "lift" */
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15); /* Enhanced shadow on hover */
+}
+
+.blog-post img {
+  width: 100%; /* Full-width images */
+  border-radius: 10px; /* Slight rounding for images */
+  margin-bottom: 15px;
+  object-fit: cover;
+  height: 200px; /* Consistent height for blog images */
+}
+
+/* Blog Titles */
+.blog-post h4 {
+  font-size: 1.6rem; /* Slightly larger, more prominent titles */
+  color: #FFFFFF; /* Darker tone for better contrast */
+  font-weight: bold;
+  margin-bottom: 10px;
+  line-height: 1.4;
+}
+
+.blog-post h4 a {
+  text-decoration: none;
+  color: inherit; /* Keeps the color consistent with the heading */
+  transition: color 0.3s ease;
+}
+
+.blog-post h4 a:hover {
+  color: #ff6600; /* Adds a modern orange pop on hover */
+  text-decoration: underline;
+}
+
+/* Blog Description */
+.blog-post p {
+  font-size: 1rem;
+  color: #E5E5EA; /* Neutral color for content */
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+/* "Read More" Button Styling */
+.btn-dark {
+  background: linear-gradient(to right, #ff6600, #ff4500); /* Vibrant gradient button */
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  border-radius: 25px; /* Rounded pill-shaped button */
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.btn-dark:hover {
+  background: linear-gradient(to right, #ff4500, #ff6600); /* Gradient flip on hover */
+  transform: scale(1.05); /* Slight enlargement effect */
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* Expanded Content (Hidden by Default) */
+.post-content {
+  display: none; /* Initially hidden */
+  font-size: 1rem;
+  color: #666; /* Neutral tone for extended content */
+  margin-top: 15px;
+  line-height: 1.6;
+}
+
+ul {
+  padding-left: 20px;
+}
+
+ul li {
+  margin-bottom: 10px;
+  color: #F2F2F7; /* Consistent neutral tone */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .blog-post {
+    padding: 15px;
+  }
+
+  .blog-post h4 {
+    font-size: 1.3rem;
+  }
+
+  .blog-post img {
+    height: 150px; /* Adjusted height for smaller screens */
+  }
+
+  .btn-dark {
+    padding: 10px 15px;
+    font-size: 0.85rem;
+  }
+}
+/* Button Styling */
+.btn-dark {
+  background-color: #333;
+  border: none;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  font-weight: bold;
+}
+
+.btn-dark:hover {
+  background-color: #444;
+}
+
+.btn-primary {
+  background-color: #d68b59; /* Adjust to match your color theme */
+  border: none;
+  color: white;
+  padding: 12px 20px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.btn-primary:hover {
+  background-color: #c07a4f; /* Slightly darker shade */
+}
+
+footer {
+  position: relative;
+}
+
+.footer-contact-icons {
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.footer-contact-icons .icon {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  color: white;
+  font-size: 18px;
+  text-decoration: none;
+  transition: transform 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+/* Brand colors */
+.icon.phone { background-color: #25D366; }
+.icon.facebook { background-color: #3b5998; }
+.icon.instagram {
+  background: radial-gradient(circle at 30% 107%, #fdf497 0%, #fd5949 40%, #d6249f 70%, #285AEB 100%);
+}
+.icon.email { background-color: #ea4335; }
+
+.footer-contact-icons .icon:hover {
+  transform: scale(1.1);
+}
+
+/* Horizontal rule under icons */
+.footer-line {
+  border: none;
+  height: 1px;
+  background-color: #ccc;
+  margin: 10px 40px 0 40px;
+}
+
+
+
+
+  </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+  <div class="header-container">
+    <div class="logo">
+      <img src="images/Logo.png" alt="Garage Blanche Logo" />
+    </div>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#ourservice">Features</a>
+      <a href="#contactus">Contact us</a>
+    </nav>
+  </div>
+</header>
+
+
+<div id="myCarousel" class="carousel slide small-carousel" data-bs-ride="carousel"data-bs-interval="3000">
+    
+    <div class="carousel-indicators">
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="0" class="active" aria-label="Slide 1"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="1" aria-label="Slide 2"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      <button type="button" data-bs-target="#myCarousel" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    </div>
+  
+    <div class="carousel-item active">
+      <img src="images/carrousal4.jpg" class="d-block w-100" alt="Garage Interior 1">
+      <div class="carousel-caption carousel-caption-left text-start">
+        <h1>Bring Your Car’s Shine Back to Life</h1>
+        <p>Expert car painting that restores, protects, and turns heads.</p>
+        
+      </div>
+    </div>
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="images/carrousal1 (1).jpg" class="d-block w-100" alt="Garage Interior 1">
+        <div class="carousel-caption carousel-caption-left text-start">
+          <h1>Reliable Auto Service</h1>
+          <p>Top-notch maintenance and repair for your vehicles.</p>
+          
+        </div>
+      </div>
+  
+      <div class="carousel-item">
+        <img src="images/carrousal2.jpg" class="d-block w-100" alt="Garage Interior 2">
+        <div class="carousel-caption carousel-caption-left text-start">
+          <h1>Modern Equipment</h1>
+          <p>Efficient diagnostics and repairs using latest tech.</p>
+          
+        </div>
+      </div>
+  
+      <div class="carousel-item">
+        <img src="images/carrousal3.jpg" class="d-block w-100" alt="Mechanic at Work">
+        <div class="carousel-caption carousel-caption-left text-start">
+          <h1>Expert Mechanics</h1>
+          <p>Certified and experienced professionals at your service.</p>
+          
+        </div>
+      </div>
+
+    
+    </div>
+  
+    
+    <button class="carousel-control-prev" type="button" data-bs-target="#myCarousel" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#myCarousel" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+
+
+<div id="about" class="container py-5 about-us">
+  <h1 class="text-center mb-4">About Us</h1>
+  <p class="text-center mb-4">
+    Welcome to <strong>Garage Blanche</strong>, where we redefine vehicle care and maintenance. We are more than just a garage—we are a destination for reliable, efficient, and trustworthy automotive services.
+  </p>
+  <p class="text-center mb-4">
+    Our team consists of <strong>highly skilled technicians</strong>, equipped with cutting-edge tools and a passion for perfection. Whether it’s routine maintenance, complex repairs, or fuel optimization, we approach every job with precision and care.
+  </p>
+</div>
+
+
+<div class="container py-5">
+  <h1 class="text-center mb-5">Why Choose Us?</h1>
+  <div class="row justify-content-center text-center">
+    
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <i class="bi bi-people" style="font-size: 50px;"></i>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Customer Focused</h5>
+          <p class="card-text">We prioritize your satisfaction by delivering outstanding service and care for every vehicle.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <i class="bi bi-tools" style="font-size: 50px;"></i>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Expert Technicians</h5>
+          <p class="card-text">Our team of skilled professionals ensures quality repairs and precise diagnostics every time.</p>
+        </div>
+      </div>
+    </div>
+    
+    <div class="col-lg-4 mb-4">
+      <div class="card">
+        <div class="card-header">
+          <i class="bi bi-cash-stack" style="font-size: 50px;"></i>
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Affordable Solutions</h5>
+          <p class="card-text">We offer cost-effective pricing without compromising on quality or service excellence.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="container py-5">
+    <h1 class="text-center mb-5">What we offer</h1>
+    <div class="row g-4 justify-content-center" id="ourservice">
+      
+      
+      <div class="col-md-4">
+        <div class="service-card text-center p-4 h-100">
+          <i class="bi bi-gear-fill display-4 text-primary mb-3"></i>
+          <h5 class="mb-3">General Maintenance</h5>
+          <p>Keep your vehicle in top shape with our full-service maintenance and inspection checks.</p>
+        </div>
+      </div>
+  
+      
+      <div class="col-md-4">
+        <div class="service-card text-center p-4 h-100">
+            <i class="bi bi-brush-fill display-4 text-danger mb-3"></i>
+            <h5 class="mb-3">Dent & Paintwork</h5>
+            <p>Professional dent removal and precision paint jobs to restore your car’s look.</p>
+            
+        </div>
+      </div>
+  
+      
+      <div class="col-md-4">
+        <div class="service-card text-center p-4 h-100">
+          <i class="bi bi-speedometer2 display-4 text-warning mb-3"></i>
+          <h5 class="mb-3">Engine Diagnostics</h5>
+          <p>Cutting-edge engine scanning tools for fast and reliable fault detection and fixes.</p>
+        </div>
+      </div>
+  
+      
+      <div class="col-md-4">
+        <div class="service-card text-center p-4 h-100">
+          <i class="bi bi-fan display-4 text-danger mb-3"></i>
+          <h5 class="mb-3">AC & Electrical</h5>
+          <p>We ensure your comfort with reliable climate control servicing and repairs.</p>
+        </div>
+      </div>
+  
+      
+      <div class="col-md-4">
+        <div class="service-card text-center p-4 h-100">
+          <i class="bi bi-car-front-fill display-4 text-info mb-3"></i>
+          <h5 class="mb-3">Suspension & Brakes</h5>
+          <p>We provide expert solutions for smooth rides and reliable stopping power.</p>
+        </div>
+      </div>
+  
+    </div>
+  </div>
+  
+  <section class="py-5 text-center" style="background-color: #333333; color: white; border-radius: 8px; box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.1);">
+    <div class="container">
+        <h2 class="mb-3" style="font-family: 'Arial', sans-serif; font-size: 2.5rem;">Need Our Help?</h2>
+        <p class="mb-4" style="font-size: 1.1rem; font-family: 'Arial', sans-serif;">Book an appointment online and let us take care of your car. We are just one click away!</p>
+        <a href="https://wa.me/+97470015958?text=Hello%2C%20I%20would%20like%20to%20book%20an%20appointment%20for%20my%20car." class="btn" style="background-color: #ff5722; color: white; padding: 12px 30px; border-radius: 50px; font-size: 1.1rem; font-weight: bold; transition: all 0.3s ease;">
+            <i class="fab fa-whatsapp" style="margin-right: 10px;"></i>Book Now
+        </a>
+    </div>
+</section>
+
+
+
+
+
+
+
+
+
+
+  
+<section class="py-5" id="faq" style="background-color: #f8f9fa;">
+    <div class="container">
+      <h2 class="text-center mb-4">Frequently Asked Questions</h2>
+      <div class="accordion accordion-flush shadow-sm" id="faqAccordion">
+        
+        
+        <div class="accordion-item mb-3 border rounded">
+          <h2 class="accordion-header" id="faq1">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#answer1">
+              <i class="bi bi-tools me-2 text-warning"></i> What services do you offer?
+            </button>
+          </h2>
+          <div id="answer1" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              We specialize in dent repair, custom paintwork, vehicle diagnostics, and routine servicing.
+            </div>
+          </div>
+        </div>
+  
+        
+        <div class="accordion-item mb-3 border rounded">
+          <h2 class="accordion-header" id="faq2">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#answer2">
+              <i class="bi bi-person-check-fill me-2 text-success"></i> Do I need an appointment?
+            </button>
+          </h2>
+          <div id="answer2" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Walk-ins are welcome, but we suggest booking in advance to avoid waiting times.
+            </div>
+          </div>
+        </div>
+  
+      
+        <div class="accordion-item mb-3 border rounded">
+          <h2 class="accordion-header" id="faq3">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#answer3">
+              <i class="bi bi-clock-history me-2 text-primary"></i> How long does a typical service take?
+            </button>
+          </h2>
+          <div id="answer3" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Minor repairs or diagnostics usually take 1-2 hours. Major services may take a full day.
+            </div>
+          </div>
+        </div>
+  
+        
+        <div class="accordion-item mb-3 border rounded">
+          <h2 class="accordion-header" id="faq4">
+            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse" data-bs-target="#answer4">
+              <i class="bi bi-currency-dollar me-2 text-danger"></i> Are your pricing and estimates transparent?
+            </button>
+          </h2>
+          <div id="answer4" class="accordion-collapse collapse" data-bs-parent="#faqAccordion">
+            <div class="accordion-body">
+              Yes, we provide a detailed estimate upfront before any work begins — no hidden charges.
+            </div>
+        </div>
+        
+  
+        
+        
+  
+      
+    </div>
+  </section>
+  
+  <section class="py-5 text-center" style="background-color: #f9fafb;">
+    <div class="container">
+      <h2 class="mb-4" style="font-family: 'Arial', sans-serif; font-weight: bold;">Car Care Tips & Expert Advice</h2>
+      <p class="mb-5" style="font-size: 18px; color: #555;">Explore expert car maintenance tips, DIY fixes, and helpful advice to keep your vehicle in top condition all year long.</p>
+      
+    <div class="row">
+      
+      <div class="col-md-4">
+        <div class="blog-post">
+          <img src="images/blog1 ch.jpg"alt="Blog Post 1" class="img-fluid mb-3">
+          <h4><a href="javascript:void(0);" onclick="togglePost('post1')">How to Prepare Your Car for Winter</a></h4>
+          <p>Learn the essential steps for preparing your vehicle for the cold season to ensure safety and performance.</p>
+          
+          
+          <div id="post1" class="post-content" style="display: none;">
+            <p>Winter is a harsh season for cars, and ensuring your vehicle is ready for the cold weather can prevent expensive repairs. Here's a step-by-step guide to preparing your car for winter:</p>
+            <ul>
+              <li>Check your battery condition</li>
+              <li>Inspect the tires and adjust air pressure</li>
+              <li>Ensure your windshield wipers and antifreeze are working</li>
+              <li>Use winter-grade motor oil for smooth engine performance</li>
+            </ul>
+            <p>By following these tips, you'll have a reliable car throughout the winter months!</p>
+          </div>
+          <a href="javascript:void(0);" onclick="togglePost('post1')" class="btn btn-dark">Read More</a>
+        </div>
+      </div>
+
+      
+      <div class="col-md-4">
+        <div class="blog-post">
+          <img src="images/blog2 ch.jpg" alt="Blog Post 2" class="img-fluid mb-3">
+          <h4><a href="javascript:void(0);" onclick="togglePost('post2')">5 Common Car Maintenance Mistakes</a></h4>
+          <p>Avoid these common mistakes to extend the life of your car and keep it running smoothly.</p>
+          
+          
+          <div id="post2" class="post-content" style="display: none;">
+            <p>Car maintenance is essential for keeping your vehicle in top shape. Unfortunately, many people make simple mistakes that could cost them in the long run. Here are five common car maintenance mistakes:</p>
+            <ul>
+              <li>Ignoring tire pressure checks</li>
+              <li>Delaying oil changes</li>
+              <li>Neglecting to replace air filters</li>
+              <li>Overlooking brake inspections</li>
+              <li>Not checking the car’s fluid levels</li>
+            </ul>
+            <p>By avoiding these mistakes, you can save money and ensure your car stays in excellent condition!</p>
+          </div>
+          <a href="javascript:void(0);" onclick="togglePost('post2')" class="btn btn-dark">Read More</a>
+        </div>
+      </div>
+
+    
+      <div class="col-md-4">
+        <div class="blog-post">
+          <img src="images/Blog3.jpg" alt="Blog Post 3" class="img-fluid mb-3">
+          <h4><a href="javascript:void(0);" onclick="togglePost('post3')">Understanding Car Engine Warning Lights</a></h4>
+          <p>Find out what those dashboard lights mean and how to address them before they become serious issues.</p>
+          
+          
+          <div id="post3" class="post-content" style="display: none;">
+            <p>Your car’s dashboard warning lights are there to alert you to potential problems. Understanding what they mean is crucial for your safety and preventing further damage. Here’s a quick guide:</p>
+            <ul>
+              <li>Check Engine Light: Indicates a possible engine issue.</li>
+              <li>Oil Pressure Light: Refers to low oil pressure in the engine.</li>
+              <li>Battery Warning Light: Suggests the battery may need replacement or recharging.</li>
+              <li>Brake Warning Light: Signals that your brake system needs attention.</li>
+            </ul>
+            <p>Always take warning lights seriously and address them immediately to avoid costly repairs!</p>
+          </div>
+          <a href="javascript:void(0);" onclick="togglePost('post3')" class="btn btn-dark">Read More</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<script>
+  function togglePost(postId) {
+    var postContent = document.getElementById(postId);
+    var button = event.target;
+
+    if (postContent.style.display === "none") {
+      postContent.style.display = "block";
+      button.innerText = "Read Less"; 
+    } else {
+      postContent.style.display = "none";
+      button.innerText = "Read More"; 
+    }
+  }
+</script>
+
+    
+    
+</section>
+
+  
+  
+<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3610.448664470071!2d51.4319348!3d25.1880877!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3e45d777c38c3e43%3A0xd732b6320ed6ed64!2sBLANCHE%20GARAGE!5e0!3m2!1sen!2sqa!4v1745675401362!5m2!1sen!2sqa" width="1400" height="250" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+  
+  
+  
+<footer class="bg-dark text-white pt-5 pb-3" id="contact">
+    <div class="container">
+      <div class="row align-items-center">
+        
+        <div class="col-md-4 text-center text-md-start mb-4 mb-md-0">
+          <img src="images/Logo.png" alt="Garage Blanche Logo" style="width: 180px;" />
+        </div>
+  
+        
+        <div  class="col-md-4 text-center mb-4 mb-md-0">
+          <h5 class="mb-2">Our Location</h5>
+          <p class="mb-1">Street no:27,Gate 253</p>
+          <p class="mb-1">Doha,Qatar</p>
+          <p class="mb-0">Email: blanche.garage@gmail.com</p>
+          <p>Phone: +974 70015958</p>
+        </div>
+  
+        
+        <div class="col-md-4 d-flex flex-column align-items-end align-items-center text-md-end text-center">
+  <h5 class="mb-3">Connect With Us</h5>
+  <div class="footer-contact-icons d-flex justify-content-end justify-content-center">
+    <a href="tel:+97470015958" class="icon phone" title="Call Us">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <a href="https://facebook.com/@garage.blanche.2025" class="icon facebook" target="_blank" title="Facebook">
+      <i class="fab fa-facebook-f"></i>
+    </a>
+    <a href="https://instagram.com/garage.blanche" class="icon instagram" target="_blank" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="mailto:blanche.garage@gmail.com" class="icon email" title="Email Us">
+      <i class="fas fa-envelope"></i>
+    </a>
+  </div>
+</div>
+
+          
+           
+        </div>
+      </div>
+  
+      <hr class="my-4" style="border-color: rgba(255, 255, 255, 0.2);" />
+  
+      
+      <div class="text-center small">
+        &copy; 2025 Garage Blanche. All rights reserved.
+      </div>
+    </div>
+  </footer>
+  
+  
+  
+
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.min.js"></script>
+</body>
+</html>
