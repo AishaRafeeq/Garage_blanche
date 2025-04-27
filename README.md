@@ -5,6 +5,14 @@ This is a fully responsive, custom-built static website created for **Garage Bla
 The website presents the business’s services, contact details, and branding in a clean, mobile-friendly layout.
 
 ---
+## 📌 Client Permission and Content Disclosure
+
+- This repository has been published with the **explicit permission** of the client, **[Garage Blanche]**.
+- It is intended solely for the purpose of **showcasing the website’s structure and development approach** as part of a professional portfolio.
+- All **confidential or proprietary assets**, including brand logos, original imagery, and sensitive content, have been omitted to ensure privacy.
+- The repository is shared for **demonstration use only**.
+- Any **unauthorized use, reproduction, or distribution** of the client’s original materials is strictly prohibited.
+
 
 ## 🛠️ Project Overview
 
